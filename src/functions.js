@@ -20,7 +20,8 @@ export function createFromProto(proto, protoProps) {
  * @returns {Function}
  */
 export function ensureProto(originalProto) {
-    return (instance) => typeof originalProto === 'object' ? originalProto.isPrototypeOf(instance) : false;
+    return (instance) => typeof originalProto === 'object' && originalProto !== null ?
+        originalProto.isPrototypeOf(instance) : false;
 }
 
 /**

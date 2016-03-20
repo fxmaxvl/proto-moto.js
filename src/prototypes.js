@@ -1,19 +1,18 @@
 'use strict';
 
 /**
- *
- * @type {{thisIsMyProto: Function, thisIsMyImplementation: Function, thisIsMyInitializer: Function, giveMeBuilder: Function}}
+ * @type {{thisIsMyProto, thisIsMyImplementation, thisIsMyInitializer, giveMeBuilder}}
  */
 export const pProtoMoto = {
 
     /**
      * @abstract
      *
-     * @params {{}[]} protoWithProtoProperties
+     * @params {{}} protoWithProtoProperties
      *
      * @returns {pProtoMoto}
      */
-    thisIsMyProto: (...protoWithProtoProperties) => {
+    thisIsMyProto: (protoWithProtoProperties) => {
         throw new Error('.thisIsMyProto() not implemented');
     },
 
