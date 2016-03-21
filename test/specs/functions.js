@@ -76,4 +76,35 @@ describe('src/functions', () => {
             );
         });
     });
+
+    describe('.createFromProto()', () => {
+
+        it('should create by one proto many objects with different implementation', () => {
+            const waitForImplementation = createFromProto(pSomeProto);
+            const obj1 = waitForImplementation({obj1: () => 'obj1'});
+            const obj2 = waitForImplementation({obj2: () => 'obj2'});
+
+            assert.isOk(
+                obj1.foo() === 'bar' && obj1.obj1() === 'obj1',
+                'obj1 should have own and protos methods'
+            );
+
+            assert.isOk(
+                obj2.foo() === 'bar' && obj2.obj2() === 'obj2',
+                'obj2 should have own and protos methods'
+            );
+
+            assert.isOk(ensureProto(pSomeProto)(obj1), 'pSomeProto should be proto of obj1');
+            assert.isOk(ensureProto(pSomeProto)(obj2), 'pSomeProto should be proto of obj2');
+        });
+
+        it('should thrown error', () => {
+            assert.throws(() => createFromProto()({}), TypeError);
+            assert.throws(() => createFromProto(NaN)({}), TypeError);
+            assert.throws(() => createFromProto(1)({}), TypeError);
+            assert.throws(() => createFromProto('qwerty')({}), TypeError);
+            assert.throws(() => createFromProto({}, null)({}), TypeError);
+            assert.throws(() => createFromProto({}, 'qwerty')({}), TypeError);
+        });
+    });
 });
