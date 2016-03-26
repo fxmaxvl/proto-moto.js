@@ -47,3 +47,39 @@ export const pProtoMoto = {
         throw new Error('.giveMeBuilder() not implemented');
     }
 };
+
+/**
+ * @type {{proto, protoProperties, initializer, implementation}}
+ */
+export const pProxy = {
+
+    /**
+     * @abstract
+     */
+    proto: () => {
+        throw new Error('.proto() not implemented');
+    },
+
+    /**
+     * @abstract
+     */
+    protoProperties: () => {
+        throw new Error('.protoProperties() not implemented');
+    },
+
+    /**
+     * @abstract
+     *
+     * @param {{}} [options]
+     */
+    initializer: (options) => {
+        throw new Error('.initializer() not implemented');
+    },
+
+    /**
+     * @abstract
+     */
+    implementation: () => {
+        throw new Error('.implementation() not implemented');
+    }
+};

@@ -1,7 +1,7 @@
 'use strict';
 
 import { assert } from 'chai';
-import { ensureProto, createFromProto } from '../../src/functions';
+import { ensureProto, createFromProto, createProtoBuilder } from '../../src/functions';
 
 describe('src/functions', () => {
     const pSomeProto = {
@@ -11,7 +11,7 @@ describe('src/functions', () => {
     describe('.ensureProto()', () => {
 
         it('should return true', () => {
-            const someObject = Object.create(pSomeProto);
+            const someObject      = Object.create(pSomeProto);
             const someOtherObject = Object.create(someObject);
 
             assert.isOk(
@@ -81,8 +81,8 @@ describe('src/functions', () => {
 
         it('should create by one proto many objects with different implementation', () => {
             const waitForImplementation = createFromProto(pSomeProto);
-            const obj1 = waitForImplementation({obj1: () => 'obj1'});
-            const obj2 = waitForImplementation({obj2: () => 'obj2'});
+            const obj1                  = waitForImplementation({obj1: () => 'obj1'});
+            const obj2                  = waitForImplementation({obj2: () => 'obj2'});
 
             assert.isOk(
                 obj1.foo() === 'bar' && obj1.obj1() === 'obj1',
@@ -106,5 +106,35 @@ describe('src/functions', () => {
             assert.throws(() => createFromProto({}, null)({}), TypeError);
             assert.throws(() => createFromProto({}, 'qwerty')({}), TypeError);
         });
+    });
+
+    describe('.createProtoBuilder()', () => {
+
+        it('should thrown error in called with not pProxy', () => {
+            assert.throws(
+                () => createProtoBuilder(),
+                TypeError,
+                '"proxy" should be created by pProxy'
+            );
+
+            assert.throws(
+                () => createProtoBuilder({}),
+                TypeError,
+                '"proxy" should be created by pProxy'
+            );
+
+            assert.throws(
+                () => createProtoBuilder(123),
+                TypeError,
+                '"proxy" should be created by pProxy'
+            );
+
+            assert.throws(
+                () => createProtoBuilder(NaN),
+                TypeError,
+                '"proxy" should be created by pProxy'
+            );
+        });
+
     });
 });

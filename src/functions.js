@@ -1,5 +1,7 @@
 'use strict';
 
+import { pProxy } from './prototypes';
+
 /**
  * For easily create new object by proto, without any ugly constructors.
  *
@@ -27,15 +29,20 @@ export function ensureProto(originalProto) {
 /**
  * Create from parts proto builder
  *
- * @param {{}} parts
+ * @param {pProxy} proxy
  *
  * @returns {Function}
  */
-export function createProtoBuilder(parts) {
-    const { proto, protoProperties } = parts;
-    let { implementation, initializer } = parts;
+export function createProtoBuilder(proxy) {
 
-    const builder = (options) => {
+    if (!ensureProto(pProxy)(proxy)) {
+        throw new TypeError('"proxy" should be created by pProxy');
+    }
+
+    const { proto, protoProperties } = proxy;
+    let { implementation, initializer } = proxy;
+
+    const builder = function builder(options) {
 
         if (typeof initializer === 'function') {
             implementation = Object.assign({}, implementation, initializer(options));
