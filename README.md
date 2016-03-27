@@ -1,5 +1,61 @@
 **proto-moto.js** — JavaScript (ES2015) library based on prototypes inheritance 
 and composition for easy work with objects without ugly constructors.
 
-#### TODO:
-- examples
+#### examples:
+You can use protoMoto function to configure and
+creating a builder.
+
+```javascript
+import { protoMoto } from 'proto-moto';
+
+const yourProtoObject = {
+    someProp: 'someProp',
+    someMethod: () => 'someMethod'
+};
+
+const builder = protoMoto()
+    .thisIsMyProto(yourProtoObject)
+    .thisIsMyImplementation({
+        implementedProp: 'implementedProp'
+    })
+    .thisIsMyInitializer((options) => {
+        //you can put here some initialize logic
+        //and return (or not) object that will be mixed into implementation
+        
+        return {
+            preinitializedProp: 'preinitializedProp'
+        };
+    })
+    .getMeBuilder();
+    
+//use of builder is:
+//-- for create objects
+const newObject = builder();
+
+//that have yourProtoObject's props and methods (if they not shadowed by your implementation)
+newObject().someProp // 'someProp'
+newObject().someMethod() // 'someMethod'
+
+//and implementations's props
+newObject().implementedProp // 'implementedProp'
+
+//and initialized props
+newObject().preinitializedProp // 'preinitializedProp'
+
+//-- for ensurence of proto
+//you can always check if this object creates be this proto
+builder.ensureProto(newObject) // true
+builder.ensureProto({some: 'other'}) // false
+```
+
+Or use separately functions createFromProto, ensureProto 
+for your own needs.
+```javascript
+import { createFromProto, ensureProto } from 'proto-moto';
+
+//create new object
+const newObject = createFromProto(/* your proto */)(/* your implementation */);
+
+//ensure object's proto
+ensureProto(/* your proto */)(newObject); // true or false
+```
