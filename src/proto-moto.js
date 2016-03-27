@@ -1,33 +1,58 @@
 'use strict';
 
-import { pProtoMoto } from './prototypes';
+import { pProtoMoto, pProxy } from './prototypes';
 import { createFromProto, ensureProto, createProtoBuilder } from './functions';
 
 /**
  * @returns {pProtoMoto}
  */
 const protoMoto = function protoMoto() {
-    const proxy = {};
+    const proxy = createFromProto(pProxy)();
 
     const api = {
+
+        /**
+         * Save to proxy your proto.
+         *
+         * @param {{}} proto
+         * @param {{}} [protoProperties]
+         * @returns {api}
+         */
         thisIsMyProto: function thisIsMyProto(proto, protoProperties) {
             Object.assign(proxy, {proto, protoProperties});
 
             return api;
         },
 
+        /**
+         * Save to proxy your implementation.
+         *
+         * @param {{}} implementation
+         * @returns {api}
+         */
         thisIsMyImplementation: function thisIsMyImplementation(implementation) {
             Object.assign(proxy, {implementation});
 
             return api;
         },
 
+        /**
+         * Save to proxy your initializer.
+         *
+         * @param {Function} initializer
+         * @returns {api}
+         */
         thisIsMyInitializer: function thisIsMyInitializer(initializer) {
             Object.assign(proxy, {initializer});
 
             return api;
         },
 
+        /**
+         * Create and return builder function by filled proxy object.
+         *
+         * @returns {Function}
+         */
         giveMeBuilder: function giveMeBuilder() {
             return createProtoBuilder(proxy);
         }
@@ -36,4 +61,4 @@ const protoMoto = function protoMoto() {
     return createFromProto(pProtoMoto)(api);
 };
 
-export default {protoMoto, createFromProto, ensureProto};
+export {protoMoto, createFromProto, ensureProto};

@@ -7,7 +7,6 @@ import { pProxy } from './prototypes';
  *
  * @param {{}} proto
  * @param {{}} [protoProps]
- *
  * @returns {Function}
  */
 export function createFromProto(proto, protoProps) {
@@ -18,7 +17,6 @@ export function createFromProto(proto, protoProps) {
  * For easy detect if original proto is prototype of instance;
  *
  * @param {{}} originalProto
- *
  * @returns {Function}
  */
 export function ensureProto(originalProto) {
@@ -30,7 +28,6 @@ export function ensureProto(originalProto) {
  * Create from parts proto builder
  *
  * @param {pProxy} proxy
- *
  * @returns {Function}
  * @throws {TypeError} either if proxy isn't creates by pProxy or if initializer not a function
  */

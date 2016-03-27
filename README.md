@@ -2,6 +2,4 @@
 and composition for easy work with objects without ugly constructors.
 
 #### TODO:
-
-- tests
 - examples
