@@ -66,3 +66,6 @@ const newObject = createFromProto(/* your proto */)(/* your implementation */);
 //ensure object's proto
 ensureProto(/* your proto */)(newObject); // true or false
 ```
+
+#### TODO
+build with webpack
