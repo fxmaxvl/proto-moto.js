@@ -2,6 +2,7 @@
 
 import { assert } from 'chai';
 import { ensureProto, createFromProto, createProtoBuilder } from '../../src/functions';
+import { pProxy } from '../../src/prototypes';
 
 describe('src/functions', () => {
     const pSomeProto = {
@@ -136,5 +137,99 @@ describe('src/functions', () => {
             );
         });
 
+        it('should thrown error if proxy.initializer not a function', () => {
+            [{}, NaN, 123, 'string'].forEach((initializer) => {
+                const proxy = createFromProto(pProxy)({initializer});
+
+                assert.throws(
+                    () => createProtoBuilder(proxy),
+                    TypeError,
+                    '"proxy.initializer" should be a function'
+                );
+            });
+        });
+
+        it('should create a valid builder with valid arguments', () => {
+            const proxy   = createFromProto(pProxy)();
+            const builder = createProtoBuilder(proxy);
+
+            assert.isFunction(
+                builder,
+                'builder should be function'
+            );
+
+            assert.isFunction(
+                builder.ensureProto,
+                'builder should have ensureProto function'
+            );
+        });
+
+        describe('on call', () => {
+            const fakeProxyObj = {
+                proto: pSomeProto,
+
+                protoProperties: {
+                    protoProp: {value: 'protoProp'}
+                },
+
+                initializer: (options) => {
+                    return Object.assign({
+                        initProp: 'initProp'
+                    }, options);
+                },
+
+                implementation: {
+                    implemProp: 'implemProp'
+                }
+            };
+
+            it('should correctly detects proto from proxy', () => {
+                const proxy   = createFromProto(pProxy)(fakeProxyObj);
+                const builder = createProtoBuilder(proxy);
+
+                assert.isOk(
+                    builder.ensureProto(createFromProto(pSomeProto)({})),
+                    'should return true with instance from proxy\'s proto'
+                );
+
+                assert.isNotOk(
+                    builder.ensureProto(createFromProto({a: 1})({})),
+                    'should return false with instance not from proxy\'s proto'
+                );
+            });
+
+            it('should correctly mix proto parts in builder', () => {
+                const proxy   = createFromProto(pProxy)(fakeProxyObj);
+                const builder = createProtoBuilder(proxy);
+                const newObj  = builder();
+
+                assert.strictEqual(
+                    newObj.protoProp, 'protoProp',
+                    'should have props from protoProperties'
+                );
+
+                assert.strictEqual(
+                    newObj.implemProp, 'implemProp',
+                    'should have props from implementation'
+                );
+
+                assert.strictEqual(
+                    newObj.initProp, 'initProp',
+                    'should have props from initializer'
+                );
+            });
+
+            it('should populate options from builder to initializer', () => {
+                const proxy   = createFromProto(pProxy)(fakeProxyObj);
+                const builder = createProtoBuilder(proxy);
+                const newObj  = builder({some: 'options'});
+
+                assert.strictEqual(
+                    newObj.some, 'options',
+                    'should have props from builder\' options'
+                );
+            });
+
+        });
     });
 });

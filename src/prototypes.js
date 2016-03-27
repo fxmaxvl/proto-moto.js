@@ -56,30 +56,24 @@ export const pProxy = {
     /**
      * @abstract
      */
-    proto: () => {
-        throw new Error('.proto() not implemented');
-    },
+    proto: {},
 
     /**
      * @abstract
      */
-    protoProperties: () => {
-        throw new Error('.protoProperties() not implemented');
-    },
+    protoProperties: {},
 
     /**
+     * should be either function or undefined
+     *
      * @abstract
      *
      * @param {{}} [options]
      */
-    initializer: (options) => {
-        throw new Error('.initializer() not implemented');
-    },
+    initializer: undefined,
 
     /**
      * @abstract
      */
-    implementation: () => {
-        throw new Error('.implementation() not implemented');
-    }
+    implementation: {}
 };

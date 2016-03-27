@@ -32,6 +32,7 @@ export function ensureProto(originalProto) {
  * @param {pProxy} proxy
  *
  * @returns {Function}
+ * @throws {TypeError} either if proxy isn't creates by pProxy or if initializer not a function
  */
 export function createProtoBuilder(proxy) {
 
@@ -39,12 +40,16 @@ export function createProtoBuilder(proxy) {
         throw new TypeError('"proxy" should be created by pProxy');
     }
 
-    const { proto, protoProperties } = proxy;
-    let { implementation, initializer } = proxy;
+    const { proto, protoProperties, initializer } = proxy;
+    let { implementation } = proxy;
+
+    if (typeof initializer !== 'undefined' && typeof initializer !== 'function') {
+        throw new TypeError('"proxy.initializer" should be a function');
+    }
 
     const builder = function builder(options) {
 
-        if (typeof initializer === 'function') {
+        if (initializer) {
             implementation = Object.assign({}, implementation, initializer(options));
         }
 
