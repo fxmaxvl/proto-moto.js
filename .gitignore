@@ -2,4 +2,3 @@
 .idea
 *.sublime-*
 /npm-debug.log
-/dist
