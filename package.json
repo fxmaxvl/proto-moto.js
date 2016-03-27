@@ -1,6 +1,21 @@
 {
   "name": "proto-moto.js",
   "version": "0.0.1",
+  "author": {
+    "name": "Maks Sadowsky"
+  },
+  "keywords": [
+    "composition",
+    "inheritance",
+    "object",
+    "prototype",
+    "object oriented",
+    "oo",
+    "node",
+    "browser",
+    "no constructors",
+    "es2015"
+  ],
   "main": "src/proto-moto.js",
   "devDependencies": {
     "babel-cli": "^6.6.5",

@@ -1,7 +1,14 @@
 **proto-moto.js** — JavaScript (ES2015) library based on prototypes inheritance 
 and composition for easy work with objects without ugly constructors.
 
-#### examples:
+#### Install
+**proto-moto.js** can be [installed via npm](https://www.npmjs.com/package/proto-moto)
+
+```shell
+npm install proto-moto
+```
+
+#### Examples:
 You can use protoMoto function to configure and
 creating a builder.
 
