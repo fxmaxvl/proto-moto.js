@@ -1,9 +1,7 @@
 {
   "name": "proto-moto.js",
   "version": "0.0.1",
-  "author": {
-    "name": "Maks Sadowsky"
-  },
+  "author": "Maks Sadowsky",
   "keywords": [
     "composition",
     "inheritance",
@@ -31,8 +29,20 @@
   "scripts": {
     "build": "npm run clean && babel src --out-file dist/proto-moto.js && npm run uglify",
     "uglify": "uglifyjs dist/proto-moto.js -m -c warnings=false -o dist/proto-moto.min.js",
-    "clean": "rimraf dist/* && mkdir dist || true",
+    "clean": "rimraf dist && mkdir dist || true",
     "test": "npm run lint && mocha --compilers js:babel-register test/index.js",
-    "lint": "jscs src && jscs test"
-  }
+    "lint": "jscs src && jscs test",
+    "prepublish": "npm run build && npm test"
+  },
+  "description": "simple library using a prototypal approach to the creation of objects in js",
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fxmaxvl/proto-moto.js.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fxmaxvl/proto-moto.js/issues"
+  },
+  "homepage": "https://github.com/fxmaxvl/proto-moto.js#readme"
 }

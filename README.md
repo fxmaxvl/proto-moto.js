@@ -2,10 +2,10 @@
 and composition for easy work with objects without ugly constructors.
 
 #### Install
-**proto-moto.js** can be [installed via npm](https://www.npmjs.com/package/proto-moto)
+**proto-moto.js** can be [installed via npm](https://www.npmjs.com/package/proto-moto.js)
 
 ```shell
-npm install proto-moto
+npm install proto-moto.js
 ```
 
 #### Examples:
