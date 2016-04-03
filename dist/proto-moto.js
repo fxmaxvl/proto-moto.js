@@ -78,7 +78,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	         *
 	         * @param {{}} proto
 	         * @param {{}} [protoProperties]
-	         * @returns {api}
+	         * @returns {pProtoMoto}
 	         */
 	        thisIsMyProto: function thisIsMyProto(proto, protoProperties) {
 	            Object.assign(proxy, { proto: proto, protoProperties: protoProperties });
@@ -90,7 +90,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	         * Save to proxy your implementation.
 	         *
 	         * @param {{}} implementation
-	         * @returns {api}
+	         * @returns {pProtoMoto}
 	         */
 	        thisIsMyImplementation: function thisIsMyImplementation(implementation) {
 	            Object.assign(proxy, { implementation: implementation });
@@ -102,7 +102,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	         * Save to proxy your initializer.
 	         *
 	         * @param {Function} initializer
-	         * @returns {api}
+	         * @returns {pProtoMoto}
 	         */
 	        thisIsMyInitializer: function thisIsMyInitializer(initializer) {
 	            Object.assign(proxy, { initializer: initializer });
@@ -134,7 +134,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	/**
-	 * @type {{thisIsMyProto, thisIsMyImplementation, thisIsMyInitializer, giveMeBuilder}}
+	 * @type {pProtoMoto}
 	 */
 
 	Object.defineProperty(exports, "__esModule", {
@@ -186,7 +186,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	/**
-	 * @type {{proto, protoProperties, initializer, implementation}}
+	 * @type {pProxy}
 	 */
 	var pProxy = exports.pProxy = {
 
