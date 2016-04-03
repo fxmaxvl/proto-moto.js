@@ -1,8 +1,7 @@
+[![npm version](https://img.shields.io/npm/v/proto-moto.js.svg?style=flat-square)](https://www.npmjs.com/package/proto-moto.js)
+
 **proto-moto.js** — JavaScript (ES2015) library based on prototypes inheritance 
 and composition for easy work with objects without ugly constructors.
-
-[![npm version](https://img.shields.io/npm/v/proto-moto.js.svg?style=flat-square)](https://www.npmjs.com/package/proto-moto.js)
-[![npm downloads](https://img.shields.io/npm/dm/proto-moto.js?style=flat-square)](https://www.npmjs.com/package/proto-moto.js)
 
 #### Install
 **proto-moto.js** can be [installed via npm](https://www.npmjs.com/package/proto-moto.js)
