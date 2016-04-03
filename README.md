@@ -21,7 +21,7 @@ You can use protoMoto function to configure and
 creating a builder.
 
 ```javascript
-import { protoMoto } from 'proto-moto';
+import { protoMoto } from 'proto-moto.js';
 
 const yourProtoObject = {
     someProp: 'someProp',
@@ -47,15 +47,16 @@ const builder = protoMoto()
 //-- for create objects
 const newObject = builder();
 
-//that have yourProtoObject's props and methods (if they not shadowed by your implementation)
-newObject().someProp // 'someProp'
-newObject().someMethod() // 'someMethod'
+//that have yourProtoObject's props and methods (if they not shadowed 
+by your implementation)
+newObject.someProp // 'someProp'
+newObject.someMethod() // 'someMethod'
 
 //and implementations's props
-newObject().implementedProp // 'implementedProp'
+newObject.implementedProp // 'implementedProp'
 
 //and initialized props
-newObject().preinitializedProp // 'preinitializedProp'
+newObject.preinitializedProp // 'preinitializedProp'
 
 //-- for ensurence of proto
 //you can always check if this object creates be this proto
@@ -66,7 +67,7 @@ builder.ensureProto({some: 'other'}) // false
 Or use separately functions createFromProto, ensureProto 
 for your own needs.
 ```javascript
-import { createFromProto, ensureProto } from 'proto-moto';
+import { createFromProto, ensureProto } from 'proto-moto.js';
 
 //create new object
 const newObject = createFromProto(/* your proto */)(/* your implementation */);

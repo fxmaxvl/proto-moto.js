@@ -16,7 +16,7 @@ const protoMoto = function protoMoto() {
          *
          * @param {{}} proto
          * @param {{}} [protoProperties]
-         * @returns {api}
+         * @returns {pProtoMoto}
          */
         thisIsMyProto: function thisIsMyProto(proto, protoProperties) {
             Object.assign(proxy, {proto, protoProperties});
@@ -28,7 +28,7 @@ const protoMoto = function protoMoto() {
          * Save to proxy your implementation.
          *
          * @param {{}} implementation
-         * @returns {api}
+         * @returns {pProtoMoto}
          */
         thisIsMyImplementation: function thisIsMyImplementation(implementation) {
             Object.assign(proxy, {implementation});
@@ -40,7 +40,7 @@ const protoMoto = function protoMoto() {
          * Save to proxy your initializer.
          *
          * @param {Function} initializer
-         * @returns {api}
+         * @returns {pProtoMoto}
          */
         thisIsMyInitializer: function thisIsMyInitializer(initializer) {
             Object.assign(proxy, {initializer});

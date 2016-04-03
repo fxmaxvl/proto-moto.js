@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * @type {{thisIsMyProto, thisIsMyImplementation, thisIsMyInitializer, giveMeBuilder}}
+ * @type {pProtoMoto}
  */
 export const pProtoMoto = {
 
@@ -49,7 +49,7 @@ export const pProtoMoto = {
 };
 
 /**
- * @type {{proto, protoProperties, initializer, implementation}}
+ * @type {pProxy}
  */
 export const pProxy = {
 
