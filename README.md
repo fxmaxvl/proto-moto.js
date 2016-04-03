@@ -1,12 +1,22 @@
 **proto-moto.js** — JavaScript (ES2015) library based on prototypes inheritance 
 and composition for easy work with objects without ugly constructors.
 
+[![build status](https://img.shields.io/travis/fxmaxvl/proto-moto.js/master.svg?style=flat-square)](https://travis-ci.org/fxmaxvl/proto-moto.js)
+[![npm version](https://img.shields.io/npm/v/proto-moto.js.svg?style=flat-square)](https://www.npmjs.com/package/proto-moto.js)
+[![npm downloads](https://img.shields.io/npm/dm/proto-moto.js?style=flat-square)](https://www.npmjs.com/package/proto-moto.js)
+
 #### Install
 **proto-moto.js** can be [installed via npm](https://www.npmjs.com/package/proto-moto.js)
 
 ```shell
 npm install proto-moto.js
 ```
+This assumes that you’re using npm package manager with a module bundler
+(Browserify, Webpack etc.).
+
+If you don't yet use a modern module bundler (or don't want use), you can use 
+a pre-built version from */dist/* folder. And when you include the library 
+to your page, it will be available as an *protoMotoLib* in global scope.
 
 #### Examples:
 You can use protoMoto function to configure and
@@ -66,6 +76,3 @@ const newObject = createFromProto(/* your proto */)(/* your implementation */);
 //ensure object's proto
 ensureProto(/* your proto */)(newObject); // true or false
 ```
-
-#### TODO
-build with webpack

@@ -10,7 +10,7 @@ const config = {
         ]
     },
     output : {
-        library      : 'pmLib',
+        library      : 'protoMotoLib',
         libraryTarget: 'umd'
     },
     plugins: [
