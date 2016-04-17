@@ -80,7 +80,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	         * @param {{}} [protoProperties]
 	         * @returns {pProtoMoto}
 	         */
-	        thisIsMyProto: function thisIsMyProto(proto, protoProperties) {
+	        mountProto: function mountProto(proto, protoProperties) {
 	            Object.assign(proxy, { proto: proto, protoProperties: protoProperties });
 
 	            return api;
@@ -92,7 +92,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	         * @param {{}} implementation
 	         * @returns {pProtoMoto}
 	         */
-	        thisIsMyImplementation: function thisIsMyImplementation(implementation) {
+	        mountImplementation: function mountImplementation(implementation) {
 	            Object.assign(proxy, { implementation: implementation });
 
 	            return api;
@@ -104,7 +104,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	         * @param {Function} initializer
 	         * @returns {pProtoMoto}
 	         */
-	        thisIsMyInitializer: function thisIsMyInitializer(initializer) {
+	        mountInitializer: function mountInitializer(initializer) {
 	            Object.assign(proxy, { initializer: initializer });
 
 	            return api;
@@ -115,7 +115,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	         *
 	         * @returns {Function}
 	         */
-	        giveMeBuilder: function giveMeBuilder() {
+	        getBuilder: function getBuilder() {
 	            return (0, _functions.createProtoBuilder)(proxy);
 	        }
 	    };
@@ -149,8 +149,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	   *
 	   * @returns {pProtoMoto}
 	   */
-	  thisIsMyProto: function thisIsMyProto(protoWithProtoProperties) {
-	    throw new Error('.thisIsMyProto() not implemented');
+	  mountProto: function mountProto(protoWithProtoProperties) {
+	    throw new Error('.mountProto() not implemented');
 	  },
 
 	  /**
@@ -160,8 +160,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	   *
 	   * @returns {pProtoMoto}
 	   */
-	  thisIsMyImplementation: function thisIsMyImplementation(implementationObject) {
-	    throw new Error('.thisIsMyImplementation() not implemented');
+	  mountImplementation: function mountImplementation(implementationObject) {
+	    throw new Error('.mountImplementation() not implemented');
 	  },
 
 	  /**
@@ -171,8 +171,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	   *
 	   * @returns {pProtoMoto}
 	   */
-	  thisIsMyInitializer: function thisIsMyInitializer(initializeFunction) {
-	    throw new Error('.thisIsMyInitializer() not implemented');
+	  mountInitializer: function mountInitializer(initializeFunction) {
+	    throw new Error('.mountInitializer() not implemented');
 	  },
 
 	  /**
@@ -180,8 +180,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	   *
 	   * @returns {Function}
 	   */
-	  giveMeBuilder: function giveMeBuilder() {
-	    throw new Error('.giveMeBuilder() not implemented');
+	  getBuilder: function getBuilder() {
+	    throw new Error('.getBuilder() not implemented');
 	  }
 	};
 
