@@ -15,13 +15,13 @@ describe('src/proto-moto', () => {
 
     describe('use of protoMoto', () => {
         const pmCreator = protoMoto()
-            .thisIsMyProto(pSomeProto, {
+            .mountProto(pSomeProto, {
                 protoProp: {value: 'protoProp'}
             })
-            .thisIsMyImplementation({
+            .mountImplementation({
                 implemProp: 'implemProp'
             })
-            .thisIsMyInitializer((options) => {
+            .mountInitializer((options) => {
                 return Object.assign({
                     initProp: 'initProp'
                 }, options);
@@ -29,7 +29,7 @@ describe('src/proto-moto', () => {
 
         it('should return a valid builder', () => {
             const someObj = createFromProto(pSomeProto)();
-            const builder = pmCreator.giveMeBuilder();
+            const builder = pmCreator.getBuilder();
             const newObj  = builder();
 
             assert.isOk(
@@ -53,11 +53,11 @@ describe('src/proto-moto', () => {
             );
         });
 
-        it('should rewrite proto part of proxy on each call .thisIsMyProto()', () => {
+        it('should rewrite proto part of proxy on each call .mountProto()', () => {
             const pSomeOtherProto = {some: 'proto'};
             const someObj         = createFromProto(pSomeProto)();
             const someOtherObj    = createFromProto(pSomeOtherProto)();
-            const builder         = pmCreator.thisIsMyProto(pSomeOtherProto).giveMeBuilder();
+            const builder         = pmCreator.mountProto(pSomeOtherProto).getBuilder();
 
             assert.isNotOk(
                 builder.ensureProto(someObj),
@@ -72,15 +72,15 @@ describe('src/proto-moto', () => {
 
         it('should rewrite all parts of proxy on each call', () => {
             const builder = pmCreator
-                .thisIsMyImplementation({
+                .mountImplementation({
                     implemProp2: 'implemProp2'
                 })
-                .thisIsMyInitializer(() => {
+                .mountInitializer(() => {
                     return {
                         initProp2: 'initProp2'
                     };
                 })
-                .giveMeBuilder();
+                .getBuilder();
             const newObj  = builder();
 
             assert.notEqual(

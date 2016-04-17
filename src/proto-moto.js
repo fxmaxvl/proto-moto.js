@@ -18,7 +18,7 @@ const protoMoto = function protoMoto() {
          * @param {{}} [protoProperties]
          * @returns {pProtoMoto}
          */
-        thisIsMyProto: function thisIsMyProto(proto, protoProperties) {
+        mountProto: function mountProto(proto, protoProperties) {
             Object.assign(proxy, {proto, protoProperties});
 
             return api;
@@ -30,7 +30,7 @@ const protoMoto = function protoMoto() {
          * @param {{}} implementation
          * @returns {pProtoMoto}
          */
-        thisIsMyImplementation: function thisIsMyImplementation(implementation) {
+        mountImplementation: function mountImplementation(implementation) {
             Object.assign(proxy, {implementation});
 
             return api;
@@ -42,7 +42,7 @@ const protoMoto = function protoMoto() {
          * @param {Function} initializer
          * @returns {pProtoMoto}
          */
-        thisIsMyInitializer: function thisIsMyInitializer(initializer) {
+        mountInitializer: function mountInitializer(initializer) {
             Object.assign(proxy, {initializer});
 
             return api;
@@ -53,7 +53,7 @@ const protoMoto = function protoMoto() {
          *
          * @returns {Function}
          */
-        giveMeBuilder: function giveMeBuilder() {
+        getBuilder: function getBuilder() {
             return createProtoBuilder(proxy);
         }
     };
