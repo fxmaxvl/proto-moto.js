@@ -29,11 +29,11 @@ const yourProtoObject = {
 };
 
 const builder = protoMoto()
-    .thisIsMyProto(yourProtoObject)
-    .thisIsMyImplementation({
+    .mountProto(yourProtoObject)
+    .mountImplementation({
         implementedProp: 'implementedProp'
     })
-    .thisIsMyInitializer((options) => {
+    .mountInitializer((options) => {
         //you can put here some initialize logic
         //and return (or not) object that will be mixed into implementation
         
@@ -41,7 +41,7 @@ const builder = protoMoto()
             preinitializedProp: 'preinitializedProp'
         };
     })
-    .getMeBuilder();
+    .getBuilder();
     
 //use of builder is:
 //-- for create objects

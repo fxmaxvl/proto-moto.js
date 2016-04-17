@@ -12,8 +12,8 @@ export const pProtoMoto = {
      *
      * @returns {pProtoMoto}
      */
-    thisIsMyProto: (protoWithProtoProperties) => {
-        throw new Error('.thisIsMyProto() not implemented');
+    mountProto: (protoWithProtoProperties) => {
+        throw new Error('.mountProto() not implemented');
     },
 
     /**
@@ -23,8 +23,8 @@ export const pProtoMoto = {
      *
      * @returns {pProtoMoto}
      */
-    thisIsMyImplementation: (implementationObject) => {
-        throw new Error('.thisIsMyImplementation() not implemented');
+    mountImplementation: (implementationObject) => {
+        throw new Error('.mountImplementation() not implemented');
     },
 
     /**
@@ -34,8 +34,8 @@ export const pProtoMoto = {
      *
      * @returns {pProtoMoto}
      */
-    thisIsMyInitializer: (initializeFunction) => {
-        throw new Error('.thisIsMyInitializer() not implemented');
+    mountInitializer: (initializeFunction) => {
+        throw new Error('.mountInitializer() not implemented');
     },
 
     /**
@@ -43,8 +43,8 @@ export const pProtoMoto = {
      *
      * @returns {Function}
      */
-    giveMeBuilder: () => {
-        throw new Error('.giveMeBuilder() not implemented');
+    getBuilder: () => {
+        throw new Error('.getBuilder() not implemented');
     }
 };
 
